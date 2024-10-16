@@ -1,0 +1,3 @@
+[submodule "ChampSim"]
+	path = ChampSim
+	url = https://github.com/yardboy27/ChampSim.git
