@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --job-name=champsim_trace_array
-#SBATCH --array=0-1  # Assuming 10 traces
 #SBATCH --time=07-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -24,9 +23,10 @@ SLURM_FULL_PATH=$(pwd)
 SLURM_DIRECTORY=$(basename "$SLURM_FULL_PATH")
 
 # Define the trace directory
-TRACE_DIR="$TRACES/test"
+# TODO: make the trace directory be passed into by the .sh file
+# TRACE_DIR="$TRACES/test"
 
-# Check if the TRACES directory exists
+# Check if the TRACES directory exists --> passed in from the .sh file that calls this
 if [ ! -d "$TRACE_DIR" ]; then
     echo "Error: TRACES directory $TRACE_DIR does not exist."
     exit 1
@@ -45,7 +45,7 @@ if [ ! -d "$OUTPUT_ROOT" ]; then
 fi
 
 # Create the output directory for this task
-OUTPUT_DIR="$OUTPUT_ROOT/$SLURM_DIRECTORY-j$BUILD_JOB_ID"
+OUTPUT_DIR="$OUTPUT_ROOT/$SLURM_DIRECTORY-d$BUILD_JOB_DATE"
 
 # Create the output directory if it doesn't exist
 if [ ! -d "$OUTPUT_DIR" ]; then
@@ -57,9 +57,9 @@ fi
 benchmark=$(basename "$TRACE_FILE" .champsimtrace.xz)  # Extracts the benchmark name
 
 # Define output and error files for ChampSim execution
-CHAMPSIM_OUTPUT_FILE="$OUTPUT_DIR/${benchmark}-j${SLURM_JOB_ID}-champsim_output.txt"
-CHAMPSIM_STD_OUTPUT="$OUTPUT_DIR/${benchmark}-j${SLURM_JOB_ID}-std_output.txt"
-CHAMPSIM_ERROR_FILE="$OUTPUT_DIR/${benchmark}-j${SLURM_JOB_ID}-error.txt"
+CHAMPSIM_OUTPUT_FILE="$OUTPUT_DIR/${benchmark}-champsim_output.txt"
+CHAMPSIM_STD_OUTPUT="$OUTPUT_DIR/${benchmark}-std_output.txt"
+CHAMPSIM_ERROR_FILE="$OUTPUT_DIR/${benchmark}-error.txt"
 
 # Redirect output and error
 exec > "$CHAMPSIM_STD_OUTPUT"
