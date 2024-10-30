@@ -34,7 +34,7 @@ echo "==========================================================="
 
 # Build ChampSim
 cd "$CHAMPSIM"
-./config.sh "$CONFIG_FILE"
+./config.sh --bindir="$CHAMPSIM_BIN_DIR" "$CONFIG_FILE"
 make || { echo "Build failed"; exit 1; }
 
 
