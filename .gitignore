@@ -2,3 +2,5 @@
 
 *.out
 *.txt
+
+*/config.*

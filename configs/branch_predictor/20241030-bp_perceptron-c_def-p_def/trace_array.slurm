@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --job-name=champsim_trace_array
-#SBATCH --time=07-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=32GB
@@ -66,5 +65,5 @@ exec > "$CHAMPSIM_STD_OUTPUT"
 exec 2> "$CHAMPSIM_ERROR_FILE"
 
 # Run ChampSim with the specific trace
-stdbuf -oL $CHAMPSIM_BIN --warmup-instructions 0 --simulation-instructions 1000000000000 "$TRACE_FILE" > "$CHAMPSIM_OUTPUT_FILE"
+stdbuf -oL $CHAMPSIM_BIN --warmup-instructions 0 "$TRACE_FILE" > "$CHAMPSIM_OUTPUT_FILE"
 
