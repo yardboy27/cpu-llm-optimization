@@ -1,4 +1,5 @@
 # Prefetcher Configuration Folder Descriptions
+<<<<<<< HEAD
 
 ## 20241028-example_config_files
 This folder contains all the example configuration files, .slurm, and .sh files.
@@ -45,3 +46,5 @@ All settings in default except for next_line_instr prefetcher implemented in the
 ## 20250109-bp_def-c_def-p_spp
 All settings in default except for my_spp_dev prefetcher implemented in the L2C. Ran on LLM.
 
+=======
+>>>>>>> febf22d5e9c3630542ac2b3ee24c9df7ea667423
