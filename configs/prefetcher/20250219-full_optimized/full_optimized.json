@@ -27,7 +27,7 @@
             "dispatch_latency": 1,
             "schedule_latency": 0,
             "execute_latency": 0,
-            "branch_predictor": "bimodal",
+            "branch_predictor": "hashed_perceptron",
             "btb": "basic_btb"
         }
     ],
@@ -39,7 +39,7 @@
     },
 
     "L1I": {
-        "sets": 64,
+        "sets": 128,
         "ways": 8,
         "rq_size": 64,
         "wq_size": 64,
@@ -55,7 +55,7 @@
     },
 
     "L1D": {
-        "sets": 64,
+        "sets": 128,
         "ways": 12,
         "rq_size": 64,
         "wq_size": 64,
@@ -83,7 +83,7 @@
         "prefetch_as_load": false,
         "virtual_prefetch": false,
         "prefetch_activate": "LOAD,PREFETCH",
-        "prefetcher": "no"
+        "prefetcher": "next_line"
     },
 
     "ITLB": {
@@ -141,7 +141,7 @@
 	},
 
     "LLC": {
-        "frequency": 4000,
+        "frequency": 6000,
         "sets": 2048,
         "ways": 16,
         "rq_size": 32,
@@ -159,7 +159,7 @@
     },
 
     "physical_memory": {
-        "frequency": 3200,
+        "frequency": 4000,
         "channels": 1,
         "ranks": 1,
         "banks": 8,
