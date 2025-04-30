@@ -2,7 +2,6 @@ set -a
 source ./../../../.env
 set +a
 
-
 export BUILD_JOB_DATE=$(date +"%Y%m%d%H%M%S")
 
 # Store the current directory
@@ -12,10 +11,9 @@ mkdir -p $CHAMPSIM_BIN_DIR
 
 export BUILD_JOB_ID=$(sbatch --parsable --mail-type=$MAIL_TYPE --mail-user=$MAIL_USER build_champsim.slurm)
 
-echo "i got here"
 export CHAMPSIM_BIN="$CHAMPSIM_BIN_DIR/champsim"
-export TRACE_DIR=$TRACES/selected_benchmarks
+export TRACE_DIR=$TRACES/all_benchmarks
 
-sleep 15 
+sleep 15
 
-sbatch --dependency=afterok:$BUILD_JOB_ID --array=0-3 --mail-type=$MAIL_TYPE --mail-user=$MAIL_USER trace_array.slurm
+sbatch --dependency=afterok:$BUILD_JOB_ID --array=0-9 --mail-type=$MAIL_TYPE --mail-user=$MAIL_USER trace_array.slurm

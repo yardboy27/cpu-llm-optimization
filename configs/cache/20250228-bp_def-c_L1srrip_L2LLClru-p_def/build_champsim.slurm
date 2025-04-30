@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=champsim_build
-#SBATCH --time=00:10:00  # Adjust time for build
+#SBATCH --time=00:40:00  # Adjust time for build
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=16GB

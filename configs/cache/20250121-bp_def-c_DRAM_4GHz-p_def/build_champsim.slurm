@@ -4,6 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=16GB
+#SBATCH --output="build_output.txt"
 
 # Load environment and modules
 set -a
