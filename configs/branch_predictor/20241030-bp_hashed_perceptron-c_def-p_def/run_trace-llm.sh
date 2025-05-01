@@ -15,4 +15,4 @@ export CHAMPSIM_BIN="$CHAMPSIM_BIN_DIR/champsim"
 export TRACE_DIR=$TRACES/llm
 export JOB_TIME="7-00:00:00"
 
-sbatch --dependency=afterok:$BUILD_JOB_ID --time=$JOB_TIME --array=0-9 --mail-type=$MAIL_TYPE --mail-user=$MAIL_USER trace_array.slurm
+sbatch --dependency=afterok:$BUILD_JOB_ID --time=$JOB_TIME --array=0-4 --mail-type=$MAIL_TYPE --mail-user=$MAIL_USER trace_array.slurm

@@ -66,3 +66,4 @@ exec 2> "$CHAMPSIM_ERROR_FILE"
 
 # Run ChampSim with the specific trace
 stdbuf -oL $CHAMPSIM_BIN --warmup-instructions 0 "$TRACE_FILE" > "$CHAMPSIM_OUTPUT_FILE"
+

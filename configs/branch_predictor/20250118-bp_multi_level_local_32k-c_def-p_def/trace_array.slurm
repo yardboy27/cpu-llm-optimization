@@ -44,7 +44,7 @@ if [ ! -d "$OUTPUT_ROOT" ]; then
 fi
 
 # Create the output directory for this task
-OUTPUT_DIR="$OUTPUT_ROOT/$SLURM_DIRECTORY-d$BUILD_JOB_DATE"
+OUTPUT_DIR="$OUTPUT_ROOT/$SLURM_DIRECTORY-d${BUILD_JOB_DATE}"
 
 # Create the output directory if it doesn't exist
 if [ ! -d "$OUTPUT_DIR" ]; then
@@ -56,6 +56,10 @@ fi
 benchmark=$(basename "$TRACE_FILE" .champsimtrace.xz)  # Extracts the benchmark name
 
 # Define output and error files for ChampSim execution
+# CHAMPSIM_OUTPUT_FILE="$OUTPUT_DIR/${benchmark}-champsim_output-d${BUILD_JOB_DATE}.txt"
+# CHAMPSIM_STD_OUTPUT="$OUTPUT_DIR/${benchmark}-std_output-d${BUILD_JOB_DATE}.txt"
+# CHAMPSIM_ERROR_FILE="$OUTPUT_DIR/${benchmark}-error-d${BUILD_JOB_DATE}.txt"
+
 CHAMPSIM_OUTPUT_FILE="$OUTPUT_DIR/${benchmark}-champsim_output.txt"
 CHAMPSIM_STD_OUTPUT="$OUTPUT_DIR/${benchmark}-std_output.txt"
 CHAMPSIM_ERROR_FILE="$OUTPUT_DIR/${benchmark}-error.txt"
@@ -66,3 +70,4 @@ exec 2> "$CHAMPSIM_ERROR_FILE"
 
 # Run ChampSim with the specific trace
 stdbuf -oL $CHAMPSIM_BIN --warmup-instructions 0 "$TRACE_FILE" > "$CHAMPSIM_OUTPUT_FILE"
+
