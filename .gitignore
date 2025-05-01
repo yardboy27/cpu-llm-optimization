@@ -2,3 +2,7 @@
 
 *.out
 *.txt
+
+# Ignore core dump files
+core
+core.*
